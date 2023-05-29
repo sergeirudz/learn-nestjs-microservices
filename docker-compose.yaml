@@ -15,5 +15,17 @@ services:
     # map volumes image:local. Changes in the editor will be reflected in the container
     volumes:
       - .:/usr/src/app
+  auth:
+    build:
+      context: .
+      dockerfile: ./apps/auth/Dockerfile
+      target: development
+    command: pnpm run start:dev auth
+    # map ports image:local
+    ports:
+      - '3001:3001'
+    # map volumes image:local. Changes in the editor will be reflected in the container
+    volumes:
+      - .:/usr/src/app
   mongo:
     image: mongo
