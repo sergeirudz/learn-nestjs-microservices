@@ -10,3 +10,9 @@
 # Commands
 
 - create monorepo: nest g library common
+- docker:
+  - cd apps/reservations
+    - (specify path where to run from) docker build ../../ -f Dockerfile -t learn-nestjs-microservices
+    - docker run learn-nestjs-microservices
+  - cd ../..
+    - docker-compose up

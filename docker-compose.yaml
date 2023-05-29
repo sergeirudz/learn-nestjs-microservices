@@ -1,0 +1,19 @@
+services:
+  reservations:
+    build:
+      # where to run docker build from
+      context: .
+      # path to the dockerfile
+      dockerfile: ./apps/reservations/Dockerfile
+      # run from the development state to have dev dependencies
+      target: development
+      # command to run the container and specify the application to run
+    command: pnpm run start:dev reservations
+    # map ports image:local
+    ports:
+      - '3000:3000'
+    # map volumes image:local. Changes in the editor will be reflected in the container
+    volumes:
+      - .:/usr/src/app
+  mongo:
+    image: mongo
