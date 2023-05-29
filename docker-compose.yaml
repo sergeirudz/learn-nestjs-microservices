@@ -9,6 +9,9 @@ services:
       target: development
       # command to run the container and specify the application to run
     command: pnpm run start:dev reservations
+    # .env file for reservations
+    env_file:
+      - ./apps/reservations/.env
     # map ports image:local
     ports:
       - '3000:3000'
@@ -21,6 +24,8 @@ services:
       dockerfile: ./apps/auth/Dockerfile
       target: development
     command: pnpm run start:dev auth
+    env_file:
+      - ./apps/auth/.env
     # map ports image:local
     ports:
       - '3001:3001'
